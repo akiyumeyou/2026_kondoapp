@@ -1,0 +1,3 @@
+# AI再生成の元画像（Web用は images/ に縮小JPEGで置く）
+/*.png
+.DS_Store

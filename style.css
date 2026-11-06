@@ -1,0 +1,95 @@
+:root {
+  --background: #111;
+  --text: #fff;
+  --primary: #ffd400;
+  --primary-text: #000;
+  --secondary: #2c2c2c;
+  --focus: #4fc3ff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, "Hiragino Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  padding: env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 12px);
+}
+
+.screen[hidden] { display: none; }
+
+#start-screen { justify-content: center; gap: 24px; }
+
+h1 { font-size: 32px; margin: 0; text-align: center; }
+
+.guide p { margin: 0 0 12px; }
+
+.start-buttons, .view-buttons { display: flex; gap: 12px; }
+
+.button {
+  min-height: 64px;
+  border: none;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+
+.button:focus-visible { outline: 4px solid var(--focus); outline-offset: 2px; }
+.button:active { transform: scale(0.97); }
+.button.primary { flex: 2; background: var(--primary); color: var(--primary-text); }
+.button.secondary { flex: 1; background: var(--secondary); color: var(--text); border: 2px solid #888; }
+.button[aria-pressed="true"] { background: var(--focus); color: #000; }
+
+.stage-wrap {
+  flex: 0 0 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.stage {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.area-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.area-layer polygon { pointer-events: all; }
+.area-layer polygon.active { stroke: #fff; stroke-width: 6; vector-effect: non-scaling-stroke; }
+
+.artwork-title { font-size: 24px; margin: 12px 0 4px; text-align: center; }
+
+.touch-status { margin: 0 0 8px; min-height: 1.6em; text-align: center; color: #ccc; font-size: 18px; }
+
+.view-buttons { margin-top: auto; }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>名画タッチ鑑賞</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="start-screen" class="screen">
+    <h1>名画タッチ鑑賞</h1>
+    <div id="guide-text" class="guide">
+      <p>画面の上の絵を、指でゆっくりなぞってください。触れた場所に何が描かれているかを読み上げます。</p>
+      <p>場所が変わると、短い音が鳴ります。</p>
+      <p>画面の下に「作品の説明」ボタンと「次の作品」ボタンがあります。</p>
+    </div>
+    <div class="start-buttons">
+      <button id="guide-button" type="button" class="button secondary">使い方を聞く</button>
+      <button id="start-button" type="button" class="button primary">スタート</button>
+    </div>
+  </main>
+
+  <main id="view-screen" class="screen" hidden>
+    <div id="stage-wrap" class="stage-wrap">
+      <div id="stage" class="stage">
+        <img id="artwork-image" alt="" aria-hidden="true">
+        <svg id="area-layer" class="area-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+    <h2 id="artwork-title" class="artwork-title" aria-live="polite"></h2>
+    <p id="touch-status" class="touch-status" aria-hidden="true"></p>
+    <div class="view-buttons">
+      <button id="overview-button" type="button" class="button secondary">作品の説明</button>
+      <button id="next-button" type="button" class="button primary">次の作品</button>
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
