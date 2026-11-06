@@ -78,15 +78,29 @@ h1 { font-size: 32px; margin: 0; text-align: center; }
   pointer-events: none;
 }
 
-.area-layer {
+.shape-layer, .cell-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.area-layer polygon { pointer-events: all; }
-.area-layer polygon.active { stroke: #fff; stroke-width: 6; vector-effect: non-scaling-stroke; }
+.shape-layer { pointer-events: none; }
+.shape-layer polygon.active { stroke: #fff; stroke-width: 6; vector-effect: non-scaling-stroke; }
+
+.cell-layer > div { position: absolute; }
+.cell-layer.debug > div { outline: 1px dashed rgba(0, 0, 0, 0.35); outline-offset: -1px; }
+
+.start-buttons { flex-direction: column; }
+#start-screen > .button { flex: none; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 .artwork-title { font-size: 24px; margin: 12px 0 4px; text-align: center; }
 

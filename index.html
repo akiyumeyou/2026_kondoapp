@@ -12,12 +12,12 @@
     <h1>名画タッチ鑑賞</h1>
     <div id="guide-text" class="guide">
       <p>画面の上の絵を、指でゆっくりなぞってください。触れた場所に何が描かれているかを読み上げます。</p>
-      <p>場所が変わると、短い音が鳴ります。</p>
       <p>画面の下に「作品の説明」ボタンと「次の作品」ボタンがあります。</p>
     </div>
+    <button id="guide-button" type="button" class="button secondary">使い方を聞く</button>
     <div class="start-buttons">
-      <button id="guide-button" type="button" class="button secondary">使い方を聞く</button>
-      <button id="start-button" type="button" class="button primary">スタート</button>
+      <button id="start-voiceover-button" type="button" class="button primary">VoiceOverを使って始める</button>
+      <button id="start-speech-button" type="button" class="button primary">VoiceOverなしで始める</button>
     </div>
   </main>
 
@@ -25,11 +25,13 @@
     <div id="stage-wrap" class="stage-wrap">
       <div id="stage" class="stage">
         <img id="artwork-image" alt="" aria-hidden="true">
-        <svg id="area-layer" class="area-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+        <svg id="shape-layer" class="shape-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div id="cell-layer" class="cell-layer"></div>
       </div>
     </div>
     <h2 id="artwork-title" class="artwork-title" aria-live="polite"></h2>
     <p id="touch-status" class="touch-status" aria-hidden="true"></p>
+    <p id="overview-live" class="visually-hidden" aria-live="polite"></p>
     <div class="view-buttons">
       <button id="overview-button" type="button" class="button secondary">作品の説明</button>
       <button id="next-button" type="button" class="button primary">次の作品</button>
