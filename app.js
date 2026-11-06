@@ -105,15 +105,18 @@ function fitStageToScreen() {
 
 function renderShapes(artwork) {
   shapeLayer.replaceChildren();
-  if (artwork.image) return;
+  if (!SHOW_AREA_OUTLINES) return;
   const areasBackToFront = [...artwork.areas].sort((first, second) => second.priority - first.priority);
-  for (const area of areasBackToFront) {
+  areasBackToFront.forEach((area, index) => {
     const polygon = document.createElementNS(SVG_NAMESPACE, "polygon");
     polygon.setAttribute("points", area.polygon.map(([x, y]) => `${x * SHAPE_COORDINATE_SCALE},${y * SHAPE_COORDINATE_SCALE}`).join(" "));
-    polygon.setAttribute("fill", area.testColor);
+    polygon.setAttribute("fill", area.testColor || `hsla(${index * 47}, 80%, 50%, 0.35)`);
+    polygon.setAttribute("stroke", "#fff");
+    polygon.setAttribute("stroke-width", "2");
+    polygon.setAttribute("vector-effect", "non-scaling-stroke");
     polygon.dataset.areaId = area.id;
     shapeLayer.appendChild(polygon);
-  }
+  });
 }
 
 // SVGの図形はVoiceOver上で位置がずれるため、エリアを格子に分け、同じエリアの隣り合うマスを長方形にまとめてHTMLで置く。
@@ -151,7 +154,7 @@ function buildAreaRectangles() {
 
 function renderCells(artwork) {
   cellLayer.replaceChildren();
-  cellLayer.classList.toggle("debug", !artwork.image);
+  cellLayer.classList.toggle("debug", SHOW_AREA_OUTLINES);
   for (const rectangle of buildAreaRectangles()) {
     const cell = document.createElement("div");
     cell.setAttribute("role", "img");
